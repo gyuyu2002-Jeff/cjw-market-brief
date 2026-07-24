@@ -14,7 +14,7 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-const MODEL = "claude-sonnet-5";
+const MODEL = "claude-3-7-sonnet-20250219";
 
 const PROMPT = `你是齋滋味（Vegan Select，台灣純素肉品外銷商，外銷澳洲/加拿大/美國/歐盟/新加坡/俄羅斯/香港）的產業情報分析師。
 請上網搜尋「今天」最新的植物性/素食食品產業消息，涵蓋以下範圍：
