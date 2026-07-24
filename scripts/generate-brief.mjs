@@ -32,8 +32,12 @@ async function fetchNews() {
   console.log("正在從 Google News RSS 抓取新聞來源...");
   const items = [];
   const urls = [
+    // 美國/全球市場（植物肉與素食趨勢）
     "https://news.google.com/rss/search?q=vegan+OR+plant-based+market+trends&hl=en&gl=US&ceid=US:en",
-    "https://news.google.com/rss/search?q=植物肉+OR+素食+OR+弘陽+OR+松珍+OR+大成&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+    // 台灣市場（鎖定植物肉與產業關鍵字，排除一般食譜/餐廳雜訊）
+    "https://news.google.com/rss/search?q=植物肉+OR+素肉+OR+植物蛋白&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
+    // 台灣本土各大素食大廠動態
+    "https://news.google.com/rss/search?q=弘陽+OR+松珍+OR+鈺統+OR+三機+OR+大成+植物肉&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
   ];
 
   for (const url of urls) {
@@ -65,7 +69,7 @@ async function fetchNews() {
     }
   }
   console.log(`新聞抓取完成，共取得 ${uniqueItems.length} 則不重複的新聞項。`);
-  return uniqueItems.slice(0, 80); // Limit to top 80 to prevent prompt bloat
+  return uniqueItems.slice(0, 100); // Limit to top 100
 }
 
 async function callGemini(newsItems) {
@@ -74,7 +78,9 @@ async function callGemini(newsItems) {
 ${JSON.stringify(newsItems, null, 2)}
 
 請從中篩選出最相關的情報（最多 10 則），並進行整理與翻譯（未入選的新聞請直接忽略）。
-特別涵蓋以下範圍：
+特別要求配額：在篩選的 10 則情報中，【必須包含至少 3-4 則關於台灣本土市場或知名素食企業（如弘陽、大成、松珍、鈺統/三機）的最新動態與消息】（只要輸入列表中有包含這些企業名稱或台灣植物肉新聞，請務必優先入選）。
+
+篩選範圍：
 1. 台灣市場（政策、通路、素食大廠：弘陽/HOYA、大成/Neo Foods、鈺統/三機、松珍）
 2. 美國市場（關稅政策、競品動態、零售趨勢）
 3. 澳洲市場
