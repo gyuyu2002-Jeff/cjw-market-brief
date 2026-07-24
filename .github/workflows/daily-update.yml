@@ -23,6 +23,7 @@ jobs:
 
       - name: 執行每日彙整腳本
         env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-brief.mjs
 
