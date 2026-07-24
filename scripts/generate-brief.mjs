@@ -34,6 +34,10 @@ async function fetchNews() {
   const urls = [
     // 美國/全球市場（植物肉與素食趨勢）
     "https://news.google.com/rss/search?q=vegan+OR+plant-based+market+trends&hl=en&gl=US&ceid=US:en",
+    // 關稅與貿易政策（全球）
+    "https://news.google.com/rss/search?q=plant-based+OR+vegan+tariff+OR+import+duty+OR+trade+policy&hl=en&gl=US&ceid=US:en",
+    // 台灣與主要出口國的植物肉關稅、進口法規與政策
+    "https://news.google.com/rss/search?q=植物肉+關稅+OR+進口稅+OR+法規+OR+貿易&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
     // 台灣市場（鎖定植物肉與產業關鍵字，排除一般食譜/餐廳雜訊）
     "https://news.google.com/rss/search?q=植物肉+OR+素肉+OR+植物蛋白&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
     // 台灣本土各大素食大廠動態
@@ -47,7 +51,7 @@ async function fetchNews() {
       const xml = await res.text();
       const itemRegex = /<item>([\s\S]*?)<\/item>/g;
       let match;
-      while ((match = itemRegex.exec(xml)) !== null) {
+      while ((match = 0, match = itemRegex.exec(xml)) !== null) {
         const content = match[1];
         const title = decodeHtmlEntities(content.match(/<title>([\s\S]*?)<\/title>/)?.[1] || "");
         const link = content.match(/<link>([\s\S]*?)<\/link>/)?.[1] || "";
@@ -69,7 +73,7 @@ async function fetchNews() {
     }
   }
   console.log(`新聞抓取完成，共取得 ${uniqueItems.length} 則不重複的新聞項。`);
-  return uniqueItems.slice(0, 100); // Limit to top 100
+  return uniqueItems.slice(0, 120); // Keep up to 120 items
 }
 
 async function callGemini(newsItems) {
@@ -78,7 +82,10 @@ async function callGemini(newsItems) {
 ${JSON.stringify(newsItems, null, 2)}
 
 請從中篩選出最相關的情報（最多 10 則），並進行整理與翻譯（未入選的新聞請直接忽略）。
-特別要求配額：在篩選的 10 則情報中，【必須包含至少 3-4 則關於台灣本土市場或知名素食企業（如弘陽、大成、松珍、鈺統/三機）的最新動態與消息】（只要輸入列表中有包含這些企業名稱或台灣植物肉新聞，請務必優先入選）。
+
+【常駐關注重點：關稅（tariffs / import duties）、進口法規與貿易政策對植物性食品外銷的影響】
+* 只要抓取到的新聞中有提到任何關於「關稅、進口法規限制、各國貿易壁壘、食品進口政策變動」，請務必優先入選，並在「行動建議 (recommendations)」中，針對該關稅變動提供給齋滋味外銷布局的策略調整建議。
+* 在篩選的 10 則情報中，也請保持至少 3 則關於台灣市場或國內大廠（弘陽、大成、松珍、鈺統/三機）的動態。
 
 篩選範圍：
 1. 台灣市場（政策、通路、素食大廠：弘陽/HOYA、大成/Neo Foods、鈺統/三機、松珍）
