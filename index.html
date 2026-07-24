@@ -274,6 +274,13 @@
     color:var(--ink-soft);
     font-family:'IBM Plex Mono',monospace;
   }
+  .hero-card-disclaimer{
+    font-size:9.5px;
+    color:var(--ink-soft);
+    text-align:right;
+    margin-top:4px;
+    opacity:0.8;
+  }
 
   @media(max-width:768px){
     .hero-banner{
@@ -392,6 +399,7 @@
               <span>影響市場：${escapeHtml(b.markets)}</span>
               <span>判讀依據：今日 ${total} 則有效情報</span>
             </div>
+            <div class="hero-card-disclaimer">※ 核心判讀與建議由 AI 自動分析推斷，僅供內部決策參考</div>
           </div>
         </div>`;
     } else if (data.highlight) {
