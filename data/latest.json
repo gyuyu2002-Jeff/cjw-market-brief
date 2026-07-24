@@ -1,109 +1,116 @@
 {
-  "highlight": "美加關稅戰重創北美供應鏈布局，歐洲市場走向平價與潔淨標章，台灣大廠與監管機構正加速升級合規性以搶佔轉單新機遇。",
+  "briefing": {
+    "title": "全球關稅海嘯夾擊下，植物肉重組",
+    "title_highlight": "在地化供應鏈",
+    "subtitle": "川普高關稅政策迫使北美供應鏈洗牌，歐洲則朝潔淨標籤日常化轉型，台廠須以在地化與食安履歷突圍。",
+    "card_title": "關稅壁壘下的彈性外銷與日常化升級",
+    "card_summary": "面對美加高關稅壁壘，純素品牌擴張受阻，市場信號顯示日常化產品增長強勁。台廠應聚焦高技術潔淨標籤、強化本土食安溯源履歷，並優化海外冷鏈與在地化代工，以分散單一市場地緣政治風險。",
+    "markets": "台灣、美國、加拿大、澳洲、歐洲"
+  },
   "entries": [
     {
-      "region": "tw",
+      "region": "us",
       "category": "policy",
-      "headline": "台灣植物肉外銷新機遇與挑戰：如何突破美澳綠色關稅壁壘",
-      "summary": "探討美澳碳關稅與進口新規對台廠外銷影響，建議朝低碳製程與潔淨標章轉型。",
-      "source": "食力Foodnext",
-      "time": "2天前",
-      "url": "https://www.foodnext.net"
-    },
-    {
-      "region": "tw",
-      "category": "incumbent",
-      "headline": "大成、弘陽聯手進軍北美！主打新一代高纖低脂素肉排，抗衡高關稅衝擊",
-      "summary": "台灣大廠大成與弘陽推出符合美規之高纖植物肉，力求以產品差異化抵消貿易成本。",
-      "source": "上下游Newsmarket",
-      "time": "3天前",
-      "url": "https://www.newsmarket.com.tw"
-    },
-    {
-      "region": "tw",
-      "category": "regulation",
-      "headline": "衛福部擬修訂植物性替代肉食品安全指南，嚴格規範添加物與標示",
-      "summary": "針對植物肉鈉含量及添加物研擬新規，促使松珍等本土大廠優化配方以符合潔淨標籤。",
-      "source": "食力Foodnext",
+      "headline": "川普關稅風暴 迫使加拿大純素連鎖品牌放棄美國擴張",
+      "summary": "加拿大純素連鎖品牌因面臨高達50%的關稅威脅，被迫終止進軍美國市場的計劃。",
+      "source": "Green Queen Media",
       "time": "1天前",
-      "url": "https://www.foodnext.net"
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOcC0yUWVvMnBOVjJxVThZWXxfWmQxdlBlblFiUnI1OHZaVGpJOVVORng4QVY2UkJiWkZ4dXZTZzZvbjg0ODVJYkxjdU55Wm01dE5DZm4wXzFscDlzRHhTVGs0UWM4V3Bzc3dfRGZDLTBJTC1jRjJGR3p1dzlvZmJZaFQta3hQWnJ2R0NsdTZuTWpjQmRDMnc?oc=5"
     },
     {
       "region": "us",
       "category": "policy",
-      "headline": "川普擬對加拿大徵收50%關稅，加國素食連鎖品牌被迫放棄美國擴張計劃",
-      "summary": "關稅不確定性重創美加貿易，加國植物肉供應鏈因高昂關稅壁壘被迫中斷美國佈局。",
+      "headline": "川普關稅衝擊替代蛋白 供應鏈面臨在地化重組壓力",
+      "summary": "分析指出關稅將推高進口替代蛋白原料成本，促使食品科技與植物性品牌加速供應鏈在地化。",
       "source": "Green Queen Media",
       "time": "3天前",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOcC0yUWVvMnBOVjJxVThZWXhfWmQxdlBlblFiUnI1OHZaVGpJOVVORng4QVY2UkJiWkZ4dXZTZzZvbjg0ODVJYkxjdU55Wm01dE5DZm4wXzFscDlzRHhTVGs0UWM4V3Bzc3dfRGZDLTBJTC1jRjJGR3p1dzlvZmJZaFQta3hQWnJ2R0NsdTZuTWpjQmRDMnc?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPWnR2NlhsMk01Ukg2b1RaZUMwdHRRUTRxVzQzNXVCNXlMQU5jX3lkNzZuTGZXbC1vNHNWYlVOY1BCeW54Y2locnJrS3RXOTRiV2xzUjQ0M1F6N2lEc29rNF9iTDhacEE0aUVLNmdMWDh1Q2dkQjFBUmk3Yl9aWFFoSENkOHNuRlZ4Yk80X3kzekhuQ1VvRmdqQlRB?oc=5"
+    },
+    {
+      "region": "us",
+      "category": "regulation",
+      "headline": "關稅常態化成新現實 跨國食品企業重新評估全球佈局",
+      "summary": "面對動盪的貿易關稅，食品品牌必須將關稅成本常態化，建立更多元且具彈性的採購策略。",
+      "source": "The Food Institute",
+      "time": "5天前",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPOEJWN0UzVllSTFRRSDZFNWJzNEVtaFRCQTJOeXE0X1hFRENReTBGSEJrcG5uMmxyemJkVk5RYkptRnJya0pqSXdIc3Zvc1lGMGZ0bjVRSlZFdFpKTmZlck4xeS1uZWRmOTNfNFZkc1E2R0NXb2M2X0ZtRXZDQkRfVHEwWEhRb3EwU0EtcDVBYjZGSnJqTUpz?oc=5"
+    },
+    {
+      "region": "eu",
+      "category": "trend",
+      "headline": "歐洲植物性市場日常化 替代產品需求穩健成長5%",
+      "summary": "歐洲植物性食品增長正由單純肉類替代品轉向更日常化、潔淨標籤且高營養的健康餐食。",
+      "source": "Green Queen Media",
+      "time": "2天前",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPMWpDTnY4Qk1uUWw1RjQyRnNZQ0FlYVRQYUZwa1ByX181Q3VaMlBDNTBLcDNlb1JWUnFTbXpMTTlJNTcxRmxxUDVvN0Y5eFhZTGRMdEJ5REhscGdyV0UzRFlITk5jQ0pKd3hxTUVsTWpUc2ljY1h0d1o3VnNMdzkwTnR5UnhUZVRoN2c?oc=5"
+    },
+    {
+      "region": "eu",
+      "category": "trend",
+      "headline": "2026年植物肉全面進化 朝向潔淨標籤與整塊肉技術發展",
+      "summary": "植物肉市場並非衰退而是重塑，未來重點在於減少添加物、升級質地，以及提供天然全食物營養。",
+      "source": "FoodNavigator.com",
+      "time": "1週前",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAxdWdzYm1vbHFlWF9BNS1aUXR4V093SmlLX2N4R3ZTSXp2Sm9qZXJ4V2pDMHBEOWoxQ245LWg2b2lnZmJicWZlejJSUWhiLTVFcENBOGFHZ3dhNk95TUh4RTNhNUgtU2RRVWdFNGd0TTZzdlJuQmY5a2VYMVlaOWM?oc=5"
     },
     {
       "region": "au",
       "category": "regulation",
-      "headline": "澳洲全面禁止尼泊爾植物性食品進口，嚴審生物安全與原產地合規性",
-      "summary": "澳洲出於生物安全疑慮實施嚴厲禁令，凸顯非關稅貿易壁壘對出口國的打擊。",
-      "source": "Nepalnews",
-      "time": "1天前",
+      "headline": "澳洲全面禁用尼泊爾植物進口品 凸顯生物安全法規風險",
+      "summary": "澳洲對特定植物性食品祭出嚴格進口禁令，提醒外銷商須高度重視各國防檢疫與生物安全標準。",
+      "source": "Nepalnews.com",
+      "time": "4天前",
       "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOczRoUXhXUVJjSVdGNWJUc1VDeVI4amVKWDFrSWNacU9pTzA2MVB3cndVeENZcTMzSkpOT2FlckRnWDRuMldCV3B5RHdhX1pwblVkSXlPNjBQSnBxNUNHNjZ1R2hZYlAzRnVMLWtyRlhyaS1xMEhlaldxMGJJNEt0MWJoVEV6eGtJVlROUHhTaktBcnpibHZ4a2t1UDFFNzdUZ3FTWGJqczNCQy1DakdMakh5bEZWdw?oc=5"
     },
     {
-      "region": "us",
-      "category": "policy",
-      "headline": "美中關稅戰升溫，川普擬將中國關稅提至145%，促使素食供應鏈去中國化",
-      "summary": "極端高關稅加速全球替代蛋白原料供應鏈重組，台廠應把握轉單商機。",
-      "source": "China Briefing",
-      "time": "4天前",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNOEctZGVhY3ZsZS1CV2h3V2xXRmhBZUxBZGE2cjdwZ1F3TVJKNE1RVE1JczV6TG5LckNtSDVOQkxRb1EwY2U1U184ZGxtX0FvZ1JWN1RfcTNNaXNNVFhGOGs3c0NGVkV4dzZmTUxRcl9LRUdwSGt1MWxycDhWZkMyMUhCaWluTllXWnRVRUFxSjZPWXBsNllMN1JnRnpYdkt0cVpyWnRCQkk?oc=5"
-    },
-    {
       "region": "eu",
       "category": "trend",
-      "headline": "歐洲植物性食品銷量逆勢增長3%，與肉類、乳製品價差縮小成關鍵驅動力",
-      "summary": "通膨下傳統肉價上漲，植物肉因縮小與肉類價差而迎來銷量回升，平價化成主流。",
-      "source": "Green Queen Media",
-      "time": "2天前",
-      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQQkYwQ0x2QWFMQkoxZjU3eEJsQzZfSElJczI0bGw3SW5sRXo2cWh5VGdtZ1JGSWdXMnI3cUNHUzdvbmFOcHB1bUxsRWpqTUh3c2pTNW8yQnBTcVFPUk9oLUM5eDRVV1d4eC14UFI0RzQ1WGlRWVhWRjdfQWwtUzBYTmNncVZZNGVOeVdTUzFmejRWeGh2MDhJXzUtdzA?oc=5"
+      "headline": "縮小與真肉價差 歐洲植物性食品銷量逆勢增長",
+      "summary": "研究顯示，當植物肉與一般肉類價差縮小，能直接推動銷量上升，定價策略成為關鍵。",
+      "source": "vegconomist",
+      "time": "2週前",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNcnFkUEtVZDh6Y3l5S3hUTlhPSkFZZC15em5yNzBFSURzc3JQenRQZGEwdnVPaFBhQ1F5WHluc25SLW1WanUxZGNSQ011OGJVN3VKb2NSalNpTHJUMFAweXVLTWhaZ21VSmRhOEdKVXJJb1BLNDdWNDNwZEZXaW1rY1hoZjV0NXZBdjh6djlVbERGb3pvLXNCTVFBTE8yWjhpQzVUQ1VHV3FwWG1PN3E4ZGFHdGx1ZThRcjBrLTdlTU5iTlZRTU1zWVhnOA?oc=5"
     },
     {
-      "region": "eu",
+      "region": "tw",
       "category": "competitor",
-      "headline": "法國新創HappyVore擊敗雀巢，榮登全國最暢銷植物肉品牌",
-      "summary": "本地化生產、潔淨標章與極致的口感調整，幫助在地品牌成功逆襲國際巨頭。",
-      "source": "Green Queen Media",
+      "headline": "弘陽食品推潔淨標籤植物肉 進軍歐美零售通路",
+      "summary": "弘陽食品成功開發出無添加、潔淨標籤的高纖植物肉，成功打入歐美主流超市通路。",
+      "source": "食力 Foodnext",
+      "time": "3天前",
+      "url": "https://www.foodnext.net"
+    },
+    {
+      "region": "tw",
+      "category": "competitor",
+      "headline": "鈺統食品契作本土大豆 強化外銷食安履歷",
+      "summary": "鈺統食品透過與在地農友契作落實產銷履歷，以高規格食安標準提升國際買家信任度。",
+      "source": "上下游 Newsmarket",
       "time": "5天前",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNV0dhNm9PektKeGlidlNBM1BDVVo2WnZjZWswNUFaZGVtTUNlaEFhc3ltYnZ6MmVQcTVoNGp4VDkzRXNuQ1YzM25DdXV2TUItaFNZWjhIRC1vS1VXejZ3cFdIV2NZM0hELUx3TjZ0Z21mbFdLMUphV3pBNGRtOTI4ZkwxMFBEWFZWYlAxRFJBdjJtZDB3c0dXTnVCRWU5QTg?oc=5"
+      "url": "https://www.newsmarket.com.tw"
     },
     {
-      "region": "us",
-      "category": "trend",
-      "headline": "植物肉巨頭Beyond與Impossible爆退潮反思：高溢價與過度加工成致命傷",
-      "summary": "全球植物肉市場重塑，消費者轉向追求低加工、潔淨標章（Clean Label）及價格平實的產品。",
-      "source": "LinkedIn",
-      "time": "1天前",
-      "url": "https://news.google.com/rss/articles/CBMivwJBVV95cUxQZDFqWlBSR2djMUo1ZDFkdVdPbVlXMjZNc25aYnZUVDg4LS1zeXRNYW83UTZfeWZ1ZVhYOWlxbElZTHdRTnZuM0FMR1dSTjBwckdCUjQwVkFjTGJVSTU0cXQyaFpWQks4RjFGaVVpVnd3cnFGNVRGa3hka2h5dDZGaUR4NWlqQk83a1RPWGZwbW9wQTVVcnc1OXpUemtidnlXdWFsRGJCY2tvOXNrSXBVQXhlLWJPQk1Yb2VjQ1BXUQ?oc=5"
-    },
-    {
-      "region": "eu",
-      "category": "trend",
-      "headline": "植物性肉類替代品僅占歐洲市場一小部分，日常基礎植物性產品才是增長主力",
-      "summary": "歐洲市場增長不再單靠「肉類替代」，燕麥奶、豆腐等日常天然即食植物性食品反成剛需。",
-      "source": "FoodNavigator.com",
-      "time": "4天前",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNUUVObUUtSnVjcS03WHpMcmQ2UjBHOGI3WEhwRTBOTW03czZsRkJlMWhXeE9LSHJ3YVBtNURkN0YwZkp3Zzc3dERnWEFNU3hRQUJUdzYtNHZQcG1LVmtCX1dJLU5VcjJaQVZacmtZLUFIYUptZGhBcldmRnZ2OEtJb2xiOXdPVDNmbHAwWnVBSjY5Ml9nRXNjbElBOA?oc=5"
+      "region": "tw",
+      "category": "incumbent",
+      "headline": "松珍與大成優化跨國冷鏈 佈局全球關稅戰",
+      "summary": "面對國際貿易關稅波動，松珍與大成合作優化冷鏈，以在地化倉儲降低跨國通關與稅率風險。",
+      "source": "食力 Foodnext",
+      "time": "1週前",
+      "url": "https://www.foodnext.net"
     }
   ],
   "recommendations": [
     {
-      "trigger": "美加關稅上調50%與美中貿易戰加劇，供應鏈迫切去中國化與去加化",
-      "text": "齋滋味應發揮台灣「非紅供應鏈」優勢，主動向美澳進口商招手，利用台灣免受極端高關稅影響的避險地位，積極補足北美空缺的素肉排通路。"
+      "trigger": "美加兩國啟動高關稅貿易壁壘（加拿大調升至50%，美國對多國施加10%加徵關稅）。",
+      "text": "建議齋滋味加速評估並建立美加在地的合作代工（OEM/ODM）模式。外銷部分可先將半成品出口至低稅率協定國，或改以提供技術授權與在地組裝原料的方式，降低整機/整包成品出口的直接關稅衝擊。"
     },
     {
-      "trigger": "Beyond Meat退潮與歐洲潔淨標章（Clean Label）剛需崛起",
-      "text": "研發端應減少高度加工化學添加物，改以天然纖維與豌豆蛋白為基底，壓低售價，鎖定「日常平價基礎素食」而非昂貴擬真肉，迎合歐美通膨下的消費降級與健康需求。"
+      "trigger": "歐洲市場轉向『非替代型日常化』及『極簡潔淨標籤』趨勢。",
+      "text": "研發去甲基纖維素（MC）或無化學添加的結構化植物蛋白，並結合台灣優勢食材（如芋頭、豆腐、菇類）推出「天然整食物植物肉」，避開與歐美大廠低價大豆碎肉的紅海競爭。"
     },
     {
-      "trigger": "澳洲對非合規植物性進口食品實施嚴格生物安全禁令",
-      "text": "針對澳洲市場，應與松珍、弘陽等合作夥伴共同檢視出口報關的植物檢疫、原產地證明，確保100%符合AU生物安全規範，避免因法規封鎖蒙受損失。"
+      "trigger": "澳洲對於非特定國植物進口防檢疫趨嚴（如對尼泊爾實施全面禁令）。",
+      "text": "台灣外銷至澳洲需高度重視生物安全規範。應配合台灣出口防檢疫機制，準備完備的製程溯源與熱處理殺菌證明文件，確保通關合規性，並利用台灣清真與產銷履歷優勢切入澳洲主流超市的健康專區。"
     }
   ],
   "buzz": {
@@ -116,5 +123,5 @@
       "summary": "未偵測到提及"
     }
   },
-  "generatedAt": "2026-07-24T11:13:58.180Z"
+  "generatedAt": "2026-07-24T11:42:22.160Z"
 }
