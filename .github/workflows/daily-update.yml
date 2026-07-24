@@ -1,0 +1,35 @@
+name: 每日彙整更新
+
+on:
+  schedule:
+    # 00:00 UTC = 08:00 台北時間，可自行調整
+    - cron: "0 0 * * *"
+  workflow_dispatch: {}   # 允許在 Actions 頁面手動按「Run workflow」測試
+
+permissions:
+  contents: write
+
+jobs:
+  update-brief:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 簽出 repo
+        uses: actions/checkout@v4
+
+      - name: 設定 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 執行每日彙整腳本
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-brief.mjs
+
+      - name: 提交並推送更新
+        run: |
+          git config user.name "cjw-intel-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "chore: 每日情報彙整更新 $(date -u +'%Y-%m-%d')"
+          git push

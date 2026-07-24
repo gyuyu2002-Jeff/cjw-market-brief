@@ -1,0 +1,106 @@
+{
+  "generatedAt": "2026-07-24T00:30:00.000Z",
+  "highlight": "美國對台素食加工品關稅政策仍在協商中，目前暫行稅率 10%，建議持續追蹤後續公告。",
+  "entries": [
+    {
+      "region": "us",
+      "category": "policy",
+      "headline": "美國貿易代表署延長素食加工品關稅暫緩措施至第三季",
+      "summary": "USTR 公告將原訂到期的暫行稅率再延長，植物性肉品加工品維持 10% 稅率，最終裁定將於秋季公布。",
+      "source": "Vegconomist",
+      "time": "示範資料",
+      "url": ""
+    },
+    {
+      "region": "tw",
+      "category": "channel",
+      "headline": "全聯新增植物肉專區，首波上架 6 個本土品牌",
+      "summary": "全聯宣布於北中南 30 家門市試點設置植物肉冷凍專區，優先合作對象以台灣本土製造商為主。",
+      "source": "上下游新聞市集",
+      "time": "示範資料",
+      "url": ""
+    },
+    {
+      "region": "eu",
+      "category": "regulation",
+      "headline": "歐盟持續討論「肉類」命名限制草案對植物性產品的適用範圍",
+      "summary": "歐洲議會農業委員會重啟討論，是否禁止植物性產品使用「香腸」「漢堡排」等傳統肉品名稱。",
+      "source": "FoodNavigator",
+      "time": "示範資料",
+      "url": ""
+    },
+    {
+      "region": "us",
+      "category": "competitor",
+      "headline": "Beyond Meat 推出新一代低鈉培根產品線",
+      "summary": "主打鈉含量降低 40%，鎖定注重健康的彈性素食者，將於秋季在美國大型連鎖超市鋪貨。",
+      "source": "Green Queen",
+      "time": "示範資料",
+      "url": ""
+    },
+    {
+      "region": "au",
+      "category": "trend",
+      "headline": "澳洲消費者調查：彈性素食人口成長至總人口 34%",
+      "summary": "Food & Drink Business Australia 最新報告顯示，非全素但每週選擇植物性餐點的族群持續擴大。",
+      "source": "Food & Drink Business AU",
+      "time": "示範資料",
+      "url": ""
+    },
+    {
+      "region": "tw",
+      "category": "incumbent",
+      "headline": "弘陽生技（HOYA）自有品牌 VVeat 新增即食調理系列",
+      "summary": "代工起家的弘陽近年積極發展自有品牌，此次新品鎖定超商鮮食櫃，強化內銷布局。",
+      "source": "食力 foodNEXT",
+      "time": "示範資料",
+      "url": ""
+    },
+    {
+      "region": "tw",
+      "category": "incumbent",
+      "headline": "大成集團 Neo Foods 楊梅生產園區傳出進度更新",
+      "summary": "大成集團投入10億元興建的植物肉專屬園區進入試量產階段，鎖定美國零售通路二次鋪貨。",
+      "source": "The News Lens 關鍵評論網",
+      "time": "示範資料",
+      "url": ""
+    },
+    {
+      "region": "eu",
+      "category": "channel",
+      "headline": "德國連鎖超市 REWE 擴大自有品牌植物肉線至 12 項品項",
+      "summary": "新增煙燻類與醃漬類產品，強調原料來源以豌豆蛋白為主，價格帶下修約 8%。",
+      "source": "vegconomist EU",
+      "time": "示範資料",
+      "url": ""
+    }
+  ],
+  "recommendations": [
+    {
+      "trigger": "美國關稅暫行稅率延長至秋季裁定",
+      "text": "近期避免為美國市場大量預先囤貨或擴產，先以現有訂單節奏為主，等關稅裁定明朗後再評估是否加碼。"
+    },
+    {
+      "trigger": "弘陽、大成等國內大廠積極衝刺自有品牌內銷通路",
+      "text": "評估是否切入超商鮮食或電商內銷通路，以「外銷品質認證」「老字號工藝」做差異化訴求。"
+    },
+    {
+      "trigger": "歐盟討論限制植物性產品使用「香腸」「漢堡排」等命名",
+      "text": "外銷歐洲的包裝與行銷文案提前準備替代命名版本，避免草案通過時臨時改包裝。"
+    },
+    {
+      "trigger": "美國低鈉培根新品上市、GFI 報告顯示零售額回溫",
+      "text": "健康訴求（低鈉、高蛋白）正在帶動買氣，現有培根脆片系列可強化相關標示。"
+    }
+  ],
+  "buzz": {
+    "gyu": {
+      "found": false,
+      "summary": "已掃描 Dcard、PTT、Google 評論、蝦皮評價、Facebook 公開貼文、Threads，目前品牌詞的消費者端討論聲量偏低，多為官網與經銷資訊。"
+    },
+    "veganselect": {
+      "found": false,
+      "summary": "已掃描同上 6 個平台，目前尚無公開消費者評論。"
+    }
+  }
+}

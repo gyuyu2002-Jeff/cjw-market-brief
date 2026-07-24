@@ -1,0 +1,10 @@
+{
+  "name": "cjw-market-intelligence",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "齋滋味 產業情報中樞 — 每日自動彙整素食產業情報",
+  "scripts": {
+    "generate": "node scripts/generate-brief.mjs"
+  }
+}

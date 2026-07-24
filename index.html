@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>齋滋味 產業情報中樞</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F1E4;
+    --paper-raised:#FBFAF3;
+    --ink:#17301F;
+    --ink-soft:#48594A;
+    --green-deep:#16301F;
+    --sage:#7C9270;
+    --gold:#C89B3C;
+    --brick:#9C3B2B;
+    --line:#D6D2C0;
+    --tw:#16301F;
+    --us:#9C3B2B;
+    --au:#C89B3C;
+    --eu:#3B4C63;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Sans TC',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:28px 20px 80px;}
+
+  .masthead{
+    border-bottom:3px solid var(--ink);
+    padding-bottom:16px;
+    margin-bottom:6px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand-mark{
+    width:58px;height:58px;border-radius:50%;
+    object-fit:cover;
+    flex-shrink:0;
+    transform:rotate(-3deg);
+    box-shadow:0 0 0 1px var(--line);
+  }
+  .brand-title{font-family:'Noto Serif TC',serif;font-weight:900;font-size:26px;letter-spacing:1px;line-height:1.1;}
+  .brand-sub{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:2.5px;color:var(--ink-soft);text-transform:uppercase;margin-top:4px;}
+  .masthead-meta{text-align:right;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);}
+  .masthead-meta .date{font-size:15px;color:var(--ink);font-weight:600;}
+
+  .subline{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 0 18px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    letter-spacing:.5px;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .subline b{color:var(--ink);}
+  .refresh-link{color:var(--ink-soft);text-decoration:none;border-bottom:1px dotted var(--ink-soft);}
+
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+  .tab{
+    position:relative;
+    border:1.5px solid var(--ink);
+    background:var(--paper-raised);
+    padding:9px 16px 9px 14px;
+    font-family:'Noto Sans TC',sans-serif;
+    font-weight:600;
+    font-size:13.5px;
+    cursor:pointer;
+    display:flex;align-items:center;gap:8px;
+    transition:transform .15s ease, background .15s ease;
+    user-select:none;
+  }
+  .tab .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
+  .tab .count{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
+  .tab:hover{transform:translateY(-2px);}
+  .tab.active{background:var(--ink);color:var(--paper);}
+  .tab.active .count{color:var(--paper);opacity:.7;}
+  .tab.active .dot{background:var(--paper);}
+  .tab[data-region="tw"].active{background:var(--tw);}
+  .tab[data-region="us"].active{background:var(--us);}
+  .tab[data-region="au"].active{background:var(--au);}
+  .tab[data-region="eu"].active{background:var(--eu);}
+
+  .alert{
+    background:var(--brick);
+    color:var(--paper-raised);
+    padding:13px 16px;
+    display:flex;gap:12px;align-items:baseline;
+    margin-bottom:24px;
+    font-size:13.5px;
+  }
+  .alert .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;letter-spacing:1.5px;
+    border:1px solid var(--paper-raised);
+    padding:2px 7px;flex-shrink:0;
+  }
+
+  .manifest{border-top:1.5px solid var(--ink);}
+  .entry{
+    display:grid;grid-template-columns:64px 1fr;gap:16px;
+    padding:20px 0;border-bottom:1px solid var(--line);align-items:start;
+  }
+  .stamp{
+    width:56px;height:56px;border-radius:50%;
+    border:2px dashed var(--stamp-color, var(--ink));
+    color:var(--stamp-color, var(--ink));
+    display:flex;align-items:center;justify-content:center;flex-direction:column;
+    font-family:'IBM Plex Mono',monospace;
+    transform:rotate(-6deg);margin-top:2px;
+  }
+  .stamp .code{font-weight:700;font-size:13px;letter-spacing:.5px;}
+  .stamp .sub{font-size:7px;letter-spacing:1px;opacity:.75;margin-top:1px;}
+  .entry-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px;}
+  .cat{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;
+    padding:2px 8px;border:1px solid var(--ink);color:var(--ink);
+  }
+  .time{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
+  .headline{font-family:'Noto Serif TC',serif;font-weight:700;font-size:17px;line-height:1.45;margin:2px 0 6px;}
+  .summary{font-size:13.5px;line-height:1.7;color:var(--ink-soft);margin-bottom:8px;}
+  .entry-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px;flex-wrap:wrap;gap:6px;}
+  .source{color:var(--ink-soft);}
+  .source b{color:var(--ink);}
+  .readmore{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.5px;
+    color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);
+    padding-bottom:1px;white-space:nowrap;
+  }
+  .entry[data-region="tw"] .stamp{--stamp-color:var(--tw);}
+  .entry[data-region="us"] .stamp{--stamp-color:var(--us);}
+  .entry[data-region="au"] .stamp{--stamp-color:var(--au);}
+  .entry[data-region="eu"] .stamp{--stamp-color:var(--eu);}
+
+  .footer-note{
+    margin-top:26px;font-family:'IBM Plex Mono',monospace;font-size:11px;
+    color:var(--ink-soft);text-align:center;letter-spacing:.5px;
+  }
+
+  .section-head{
+    margin-top:44px;margin-bottom:16px;padding-top:20px;
+    border-top:3px solid var(--ink);
+    display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;
+  }
+  .section-title{font-family:'Noto Serif TC',serif;font-weight:900;font-size:19px;letter-spacing:.5px;}
+  .section-sub{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-soft);letter-spacing:.5px;}
+
+  .reco-list{display:flex;flex-direction:column;}
+  .reco{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);}
+  .reco:last-child{border-bottom:none;}
+  .reco-num{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;color:var(--green-deep);}
+  .reco-trigger{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);letter-spacing:.2px;margin-bottom:5px;}
+  .reco-text{font-size:14px;line-height:1.7;color:var(--ink);}
+
+  .buzz-tabs{display:flex;gap:10px;margin-bottom:14px;}
+  .buzz-tab{
+    border:1.5px solid var(--ink);padding:7px 14px;font-size:13px;font-weight:600;
+    cursor:pointer;background:var(--paper-raised);
+  }
+  .buzz-tab.active{background:var(--ink);color:var(--paper);}
+  .buzz-empty{border:1.5px dashed var(--line);padding:26px 22px;text-align:center;}
+  .buzz-empty-title{font-family:'Noto Serif TC',serif;font-weight:700;font-size:15px;margin-bottom:8px;}
+  .buzz-empty-body{font-size:12.5px;line-height:1.75;color:var(--ink-soft);max-width:520px;margin:0 auto;}
+
+  .load-state, .error-state{
+    padding:40px 20px;text-align:center;font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;color:var(--ink-soft);
+  }
+  .error-state{color:var(--brick);}
+
+  @media(max-width:560px){
+    .entry{grid-template-columns:44px 1fr;gap:10px;}
+    .stamp{width:44px;height:44px;}
+    .stamp .code{font-size:11px;}
+    .stamp .sub{display:none;}
+    .headline{font-size:15.5px;}
+    .brand-title{font-size:21px;}
+    .masthead{align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="brand">
+      <img class="brand-mark" src="assets/logo.jpg" alt="齋之味 logo">
+      <div>
+        <div class="brand-title">齋滋味 產業情報中樞</div>
+        <div class="brand-sub">Vegan Select · Intelligence Desk</div>
+      </div>
+    </div>
+    <div class="masthead-meta">
+      <div class="date" id="dateLine">載入中…</div>
+      <div id="summaryLine"></div>
+    </div>
+  </div>
+
+  <div class="subline">
+    <div>台灣 / 美國 / 澳洲 / 歐洲市場 · 每日自動更新</div>
+    <div id="lastUpdated">最後更新 <b>—</b></div>
+  </div>
+
+  <div id="content">
+    <div class="load-state">正在載入今日彙整…</div>
+  </div>
+
+</div>
+
+<script>
+  const CAT_LABELS = {
+    "policy":"政策 / 關稅","competitor":"競品動態","channel":"通路動態",
+    "trend":"趨勢 / 報告","expo":"展會 / 貿易","incumbent":"大廠動態","regulation":"法規"
+  };
+  let currentData = null;
+
+  function escapeHtml(s){
+    return String(s ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function entryHTML(e){
+    const catLabel = CAT_LABELS[e.category] || e.category || '產業動態';
+    return `
+      <div class="entry" data-region="${escapeHtml(e.region)}">
+        <div class="stamp"><span class="code">${escapeHtml((e.region||'').toUpperCase())}</span><span class="sub">CLEARED</span></div>
+        <div>
+          <div class="entry-head"><span class="cat">${escapeHtml(catLabel)}</span><span class="time">${escapeHtml(e.time||'')}</span></div>
+          <div class="headline">${escapeHtml(e.headline)}</div>
+          <div class="summary">${escapeHtml(e.summary)}</div>
+          <div class="entry-foot"><span class="source">來源：<b>${escapeHtml(e.source||'未標明')}</b></span>${e.url ? `<a class="readmore" href="${escapeHtml(e.url)}" target="_blank" rel="noopener">查看原文 →</a>` : ''}</div>
+        </div>
+      </div>`;
+  }
+
+  function render(data){
+    currentData = data;
+    const entries = data.entries || [];
+    const counts = {tw:0,us:0,au:0,eu:0};
+    entries.forEach(e => { if(counts[e.region] !== undefined) counts[e.region]++; });
+    const total = entries.length;
+    const marketsUsed = Object.values(counts).filter(c=>c>0).length;
+
+    const genDate = data.generatedAt ? new Date(data.generatedAt) : new Date();
+    document.getElementById('dateLine').textContent = genDate.toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric',weekday:'short'});
+    document.getElementById('summaryLine').textContent = `本日彙整 ${total} 則 · ${marketsUsed} 個市場`;
+    document.getElementById('lastUpdated').innerHTML = `最後更新 <b>${genDate.toLocaleString('zh-TW',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})}</b>`;
+
+    const recoHTML = (data.recommendations||[]).map((r,i)=>`
+      <div class="reco">
+        <div class="reco-num">${String(i+1).padStart(2,'0')}</div>
+        <div>
+          <div class="reco-trigger">觸發訊號：${escapeHtml(r.trigger)}</div>
+          <div class="reco-text">${escapeHtml(r.text)}</div>
+        </div>
+      </div>`).join('');
+
+    document.getElementById('content').innerHTML = `
+      ${data.highlight ? `
+      <div class="alert">
+        <span class="tag">重點關注</span>
+        <span>${escapeHtml(data.highlight)}</span>
+      </div>` : ''}
+
+      <div class="tabs" id="tabs">
+        <div class="tab active" data-region="all"><span class="dot"></span>全部<span class="count">${total}</span></div>
+        <div class="tab" data-region="tw"><span class="dot"></span>台灣<span class="count">${counts.tw}</span></div>
+        <div class="tab" data-region="us"><span class="dot"></span>美國<span class="count">${counts.us}</span></div>
+        <div class="tab" data-region="au"><span class="dot"></span>澳洲<span class="count">${counts.au}</span></div>
+        <div class="tab" data-region="eu"><span class="dot"></span>歐洲<span class="count">${counts.eu}</span></div>
+      </div>
+
+      <div class="manifest" id="manifest">
+        ${entries.map(entryHTML).join('')}
+      </div>
+
+      <div class="footer-note">資料每日由系統自動搜尋彙整 · 點擊「查看原文」開啟原始報導</div>
+
+      <div class="section-head">
+        <div class="section-title">行動建議</div>
+        <div class="section-sub">根據上方彙整新聞自動生成</div>
+      </div>
+      <div class="reco-list" id="recoList">${recoHTML}</div>
+
+      <div class="section-head">
+        <div class="section-title">品牌口碑雷達</div>
+        <div class="section-sub">每日偵測「齋滋味／齋之味／VeganSelect」公開評論</div>
+      </div>
+      <div class="buzz-tabs" id="buzzTabs">
+        <div class="buzz-tab active" data-brand="gyu">齋之味 / 齋滋味</div>
+        <div class="buzz-tab" data-brand="veganselect">VeganSelect</div>
+      </div>
+      <div class="buzz-empty" id="buzzBox">
+        <div class="buzz-empty-title" id="buzzTitle"></div>
+        <div class="buzz-empty-body" id="buzzBody"></div>
+      </div>
+    `;
+
+    attachTabFilter();
+    attachBuzzTabs();
+    if(data.buzz) renderBuzz(data.buzz, 'gyu');
+  }
+
+  function renderBuzz(buzz, brand){
+    const b = buzz[brand] || {found:false, summary:'尚無資料。'};
+    document.getElementById('buzzTitle').textContent = b.found ? '偵測到新公開評論／討論' : '今日未偵測到新公開評論';
+    document.getElementById('buzzBody').textContent = b.summary || '';
+  }
+
+  function attachTabFilter(){
+    document.querySelectorAll('.tab').forEach(tab=>{
+      tab.onclick = ()=>{
+        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        const region = tab.dataset.region;
+        document.querySelectorAll('.entry').forEach(e=>{
+          e.style.display = (region==='all' || e.dataset.region===region) ? 'grid' : 'none';
+        });
+      };
+    });
+  }
+
+  function attachBuzzTabs(){
+    document.querySelectorAll('.buzz-tab').forEach(tab=>{
+      tab.onclick = ()=>{
+        document.querySelectorAll('.buzz-tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        if(currentData && currentData.buzz) renderBuzz(currentData.buzz, tab.dataset.brand);
+      };
+    });
+  }
+
+  fetch('data/latest.json?_=' + Date.now())
+    .then(r => {
+      if(!r.ok) throw new Error('讀取 data/latest.json 失敗 (' + r.status + ')');
+      return r.json();
+    })
+    .then(render)
+    .catch(err => {
+      document.getElementById('content').innerHTML = `<div class="error-state">無法載入資料：${escapeHtml(err.message)}</div>`;
+    });
+</script>
+
+</body>
+</html>
