@@ -1,7 +1,7 @@
 // scripts/generate-brief.mjs
 // Runs in GitHub Actions (Node 20+, global fetch available).
 // Requires the GEMINI_API_KEY or ANTHROPIC_API_KEY environment variable (set as a repo secret).
-// Calls the Gemini API with google_search_retrieval tool, asks Gemini to research
+// Calls the Gemini API with google_search tool, asks Gemini to research
 // today's plant-based / vegan food industry news, and writes the result to
 // data/latest.json (plus an archived copy under data/history/).
 
@@ -14,7 +14,7 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-const MODEL = "gemini-1.5-flash";
+const MODEL = "gemini-3.5-flash";
 
 const PROMPT = `你是齋滋味（Vegan Select，台灣純素肉品外銷商，外銷澳洲/加拿大/美國/歐盟/新加坡/俄羅斯/香港）的產業情報分析師。
 請上網搜尋最近 24-48 小時內最新的植物性/素食食品產業消息，涵蓋以下範圍：
@@ -71,12 +71,7 @@ async function callGemini() {
         parts: [{ text: PROMPT }]
       }],
       tools: [{
-        google_search_retrieval: {
-          dynamic_retrieval_config: {
-            mode: "MODE_DYNAMIC",
-            dynamic_threshold: 0
-          }
-        }
+        google_search: {}
       }],
       generationConfig: {
         responseMimeType: "application/json"
