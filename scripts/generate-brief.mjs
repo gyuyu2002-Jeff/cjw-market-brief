@@ -1,20 +1,20 @@
 // scripts/generate-brief.mjs
 // Runs in GitHub Actions (Node 20+, global fetch available).
-// Requires the GEMINI_API_KEY or ANTHROPIC_API_KEY environment variable (set as a repo secret).
-// Calls the Gemini API with google_search tool, asks Gemini to research
+// Requires the ANTHROPIC_API_KEY environment variable (set as a repo secret).
+// Calls the Anthropic API with the web_search tool, asks Claude to research
 // today's plant-based / vegan food industry news, and writes the result to
 // data/latest.json (plus an archived copy under data/history/).
 
 import { writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 
-const API_KEY = process.env.GEMINI_API_KEY || process.env.ANTHROPIC_API_KEY;
+const API_KEY = process.env.ANTHROPIC_API_KEY;
 if (!API_KEY) {
-  console.error("Missing API KEY environment variable (GEMINI_API_KEY or ANTHROPIC_API_KEY).");
+  console.error("Missing ANTHROPIC_API_KEY environment variable.");
   process.exit(1);
 }
 
-const MODEL = "gemini-3.5-flash";
+const MODEL = "claude-3-7-sonnet-20250219";
 
 const PROMPT = `你是齋滋味（Vegan Select，台灣純素肉品外銷商，外銷澳洲/加拿大/美國/歐盟/新加坡/俄羅斯/香港）的產業情報分析師。
 請上網搜尋最近 24-48 小時內最新的植物性/素食食品產業消息，涵蓋以下範圍：
@@ -39,56 +39,32 @@ const PROMPT = `你是齋滋味（Vegan Select，台灣純素肉品外銷商，�
   }
 }`;
 
-async function listModels() {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${API_KEY}`;
-  try {
-    const res = await fetch(url);
-    if (res.ok) {
-      const data = await res.json();
-      console.log("您的 API Key 可用的模型列表：");
-      for (const m of (data.models || [])) {
-        console.log(`- ${m.name} (methods: ${m.supportedGenerationMethods?.join(", ")})`);
-      }
-    } else {
-      const body = await res.text();
-      console.error(`無法取得模型列表，狀態碼: ${res.status}, 回應: ${body}`);
-    }
-  } catch (e) {
-    console.error("取得模型列表出錯：", e.message);
-  }
-}
-
-async function callGemini() {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
-  const res = await fetch(url, {
+async function callClaude() {
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "x-api-key": API_KEY,
+      "anthropic-version": "2023-06-01"
     },
     body: JSON.stringify({
-      contents: [{
-        role: "user",
-        parts: [{ text: PROMPT }]
-      }],
-      tools: [{
-        google_search: {}
-      }],
-      generationConfig: {
-        responseMimeType: "application/json"
-      }
+      model: MODEL,
+      max_tokens: 4000,
+      messages: [{ role: "user", content: PROMPT }],
+      tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 12 }]
     })
   });
 
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`Gemini API 錯誤 (${res.status}): ${body}`);
+    throw new Error(`Anthropic API 錯誤 (${res.status}): ${body}`);
   }
 
   const result = await res.json();
-  const textBlock = result.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!textBlock) {
-    throw new Error("Gemini 回傳內容為空");
-  }
+  const textBlock = (result.content || [])
+    .filter(b => b.type === "text")
+    .map(b => b.text)
+    .join("\n");
 
   const cleaned = textBlock.replace(/```json/g, "").replace(/```/g, "").trim();
 
@@ -104,8 +80,7 @@ async function callGemini() {
 
 async function main() {
   console.log(`[${new Date().toISOString()}] 開始產生今日彙整…`);
-  await listModels();
-  const data = await callGemini();
+  const data = await callClaude();
   data.generatedAt = new Date().toISOString();
 
   const rootDir = path.resolve(new URL(".", import.meta.url).pathname, "..");
