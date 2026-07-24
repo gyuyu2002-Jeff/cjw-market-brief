@@ -45,7 +45,9 @@ async function fetchNews() {
     // 台灣食力 Foodnext（指定關鍵字：植物肉/素食/食安）
     "https://news.google.com/rss/search?q=site:foodnext.net+(植物肉+OR+素食+OR+食安)&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
     // 台灣上下游 Newsmarket（指定關鍵字：植物肉/素食/食安）
-    "https://news.google.com/rss/search?q=site:newsmarket.com.tw+(植物肉+OR+素食+OR+食安)&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+    "https://news.google.com/rss/search?q=site:newsmarket.com.tw+(植物肉+OR+素食+OR+食安)&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
+    // 品牌口碑關鍵字監測（齋滋味/齋之味/VeganSelect）
+    "https://news.google.com/rss/search?q=" + encodeURIComponent('"齋滋味" OR "齋之味" OR "VeganSelect"') + "&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
   ];
 
   for (const url of urls) {
@@ -77,34 +79,38 @@ async function fetchNews() {
     }
   }
   console.log(`新聞抓取完成，共取得 ${uniqueItems.length} 則不重複的新聞項。`);
-  return uniqueItems.slice(0, 150); // Keep up to 150 items due to new sources
+  return uniqueItems.slice(0, 160); // Keep up to 160 items
 }
 
 async function callGemini(newsItems) {
   const prompt = `你是齋滋味（Vegan Select，台灣純素肉品外銷商，外銷澳洲/加拿大/美國/歐盟/新加坡/俄羅斯/香港）的產業情報分析師。
-以下是從 Google News 抓取到的最新素食與植物肉相關新聞列表：
+以下是從 Google News 抓取到的最新相關新聞與提及列表：
 ${JSON.stringify(newsItems, null, 2)}
 
 請從中篩選出最相關的情報（最多 10 則），並進行整理與翻譯（未入選的新聞請直接忽略）。
 
-【常駐關注重點】
+【常駐關注重點與要求】
 1. 關稅（tariffs / import duties）、進口法規與貿易政策對植物性食品外銷的影響。
 2. 台灣市場的「食力 (Foodnext)」與「上下游 (Newsmarket)」這兩家專業媒體關於素食、植物肉、以及重要「食品安全（食安）」的深度報導。
 3. 台灣本土素食大廠（弘陽、大成、松珍、鈺統/三機）的最新商業動態。
 * 請確保篩選出的 10 則日報中，必須包含上述台灣本地報導或大廠動向至少 3 則。
+
+【品牌口碑雷達監測】
+* 請仔細檢查上述列表中是否有任何標題或內容提及了「齋滋味」、「齋之味」或「VeganSelect」。
+* 如果有偵測到相關新聞或公開評論討論，請在 "buzz" 欄位中將對應品牌設為 "found": true，並在 "summary" 中摘要討論內容。
+* 如果完全沒有提到，請設為 "found": false，並填寫 "未偵測到提及"。
 
 篩選範圍：
 1. 台灣市場（政策、通路、素食大廠、食安事件與最新規範）
 2. 美國市場（關稅政策、競品動態、零售趨勢）
 3. 澳洲市場
 4. 歐洲市場（法規、通路）
-5. 針對品牌「齋滋味」「齋之味」或「VeganSelect」的評論或討論（若新聞中完全沒有提及，請在 buzz 對應欄位中設為 found: false 並寫 "未偵測到提及"）
 
 請依據篩選出的新聞，回傳符合以下格式的合法 JSON（不要加 markdown 代碼框、不要任何說明文字、不要在 JSON 前後加 any 文字）：
 {
   "highlight": "一句話重點提醒，若無重大事件可留空字串",
   "entries": [
-    {"region":"tw|us|au|eu","category":"policy|competitor|channel|trend|expo|incumbent|regulation","headline":"標題","summary":"40字內摘要","source":"媒體名稱（如：食力Foodnext、上下游Newsmarket 等）","time":"發布時間，請填寫相對時間如：幾小時前或幾天前","url":"原文網址"}
+    {"region":"tw|us|au|eu","category":"policy|competitor|channel|trend|expo|incumbent|regulation","headline":"標題","summary":"40字內摘要","source":"媒體名稱","time":"發布時間，請填寫相對時間如：幾小時前或幾天前","url":"原文網址"}
   ],
   "recommendations": [
     {"trigger":"觸發的新聞重點","text":"具體建議"}
