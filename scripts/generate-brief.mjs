@@ -24,7 +24,7 @@ const PROMPT = `你是齋滋味（Vegan Select，台灣純素肉品外銷商，�
 4. 歐洲市場（法規、通路）
 5. 是否有任何公開評論或討論提及品牌「齋滋味」「齋之味」或「VeganSelect」（Dcard、PTT、Google評論、蝦皮評價、Facebook、Threads、部落格等）
 
-請依據搜尋結果，只能回傳合法 JSON，格式如下（不要加 markdown 代碼框、不要任何說明文字、不要在 JSON 前後加任何文字）：
+請依據搜尋結果，只能回傳合法 JSON，格式如下（不要加 markdown 代碼框、不要任何說明文字、不要在 JSON 前後加 any 文字）：
 {
   "highlight": "一句話重點提醒，若無重大事件可留空字串",
   "entries": [
@@ -38,6 +38,25 @@ const PROMPT = `你是齋滋味（Vegan Select，台灣純素肉品外銷商，�
     "veganselect": {"found": true或false, "summary":"偵測結果說明"}
   }
 }`;
+
+async function listModels() {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${API_KEY}`;
+  try {
+    const res = await fetch(url);
+    if (res.ok) {
+      const data = await res.json();
+      console.log("您的 API Key 可用的模型列表：");
+      for (const m of (data.models || [])) {
+        console.log(`- ${m.name} (methods: ${m.supportedGenerationMethods?.join(", ")})`);
+      }
+    } else {
+      const body = await res.text();
+      console.error(`無法取得模型列表，狀態碼: ${res.status}, 回應: ${body}`);
+    }
+  } catch (e) {
+    console.error("取得模型列表出錯：", e.message);
+  }
+}
 
 async function callGemini() {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
@@ -90,6 +109,7 @@ async function callGemini() {
 
 async function main() {
   console.log(`[${new Date().toISOString()}] 開始產生今日彙整…`);
+  await listModels();
   const data = await callGemini();
   data.generatedAt = new Date().toISOString();
 
